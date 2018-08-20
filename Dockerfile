@@ -36,8 +36,8 @@ RUN cp -rf /home/eqemu/EQEmuInstall/linux/* /home/eqemu/server && \
 	cp -rf /home/eqemu/Server/build/bin/* /home/eqemu/server && \
 	cp -rf /home/eqemu/Server/utils/defaults/* /home/eqemu/server && \
 	cp -rf /home/eqemu/Server/utils/patches/* /home/eqemu/server && \
-	unzip /home/eqemu/map.zip -o -d /home/eqemu/server/Maps/ && \
-	unzip /home/eqemu/quests.zip -o -d /home/eqemu/server/quests/ && \
+	unzip -o /home/eqemu/map.zip -d /home/eqemu/server/Maps/ && \
+	unzip -o /home/eqemu/quests.zip -d /home/eqemu/server/quests/ && \
 	mv -f /home/eqemu/server/quests/plugins /home/eqemu/server/ && \
 	mv -f /home/eqemu/server/quests/lua_modules /home/eqemu/server/ && \
 	ln -s /home/eqemu/server/Maps /home/eqemu/server/maps
