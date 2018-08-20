@@ -4,8 +4,8 @@ RUN mkdir /home/eqemu && mkdir /home/eqemu/server && mkdir /home/eqemu/server/sq
 
 WORKDIR /home/eqemu
 
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
-	apt-get -y update && \
+#RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+RUN	apt-get -y update && \
 	apt-get -y -qq install bash build-essential cmake cpp curl debconf-utils \
 	g++ gcc git git-core libio-stringy-perl liblua5.1 liblua5.1-dev libluabind-dev \
 	libmysql++ libperl-dev libperl5i-perl libwtdbomysql-dev minizip lua5.1 make \
@@ -23,8 +23,8 @@ RUN wget http://ftp.us.debian.org/debian/pool/main/libs/libsodium/libsodium-dev_
 
 RUN dpkg -i ./libsodium*.deb && mv ./libsodium*.deb ./server/
 
-#RUN git clone --depth 1 https://github.com/EQEmu/Server.git && git clone https://github.com/Akkadius/EQEmuInstall.git --depth 1
-RUN git clone --depth 1 https://gitee.com/rabbired/EQEmuServer.git Server && git clone https://gitee.com/rabbired/EQEmuInstall.git --depth 1
+RUN git clone --depth 1 https://github.com/EQEmu/Server.git && git clone https://github.com/Akkadius/EQEmuInstall.git --depth 1
+#RUN git clone --depth 1 https://gitee.com/rabbired/EQEmuServer.git Server && git clone https://gitee.com/rabbired/EQEmuInstall.git --depth 1
 
 RUN mkdir /home/eqemu/Server/build
 
@@ -50,8 +50,8 @@ COPY --from=build /home/eqemu/server /mnt/eqemu
 
 WORKDIR /mnt/eqemu
 
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
-	apt-get update && apt-get install -y \
+#RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+RUN	apt-get update && apt-get install -y \
 	mariadb-client libio-stringy-perl liblua5.1-dev unzip wget libjson-perl && \
 	dpkg -i ./libsodium*.deb && rm -rf ./libsodium*.deb && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
