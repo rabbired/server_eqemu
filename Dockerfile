@@ -39,7 +39,7 @@ WORKDIR /mnt/eqemu
 
 RUN	apt-get update && \
 apt-get install -y mariadb-client libio-stringy-perl liblua5.1-dev \
-unzip wget libjson-perl libswitch-perl && \
+unzip wget curl libjson-perl libswitch-perl && \
 dpkg -i ./libsodium*.deb && \
 rm -rf ./libsodium*.deb && \
 apt-get clean && \
