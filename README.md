@@ -1,10 +1,11 @@
 # EQEmu Server for Docker
 
-docker run -p 9080:9080 -p 9000:9000/udp -p 7000-7100:7000-7100/udp --volumes-from [you_emudata_containers_name] -d rabbired/emuserver
+docker run -p 9080:9080 -p 9000:9000/udp -p 7000-7100:7000-7100/udp -v [you_eqemu_config] -d rabbired/server_eqemu
 
 # Requirements
 
-docker run -p 3306:3306 -v [your_config_path]:/mnt/eqemu/emucfg -v /mnt/eqemu -e MYSQL_ROOT_PASSWORD=[your_password] -d rabbired/emudata
+docker run --restart=always --name [name] -v [you_eqemu_data]:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=[root_pass] \
+-e MYSQL_USER=[eqemu_user] -e MYSQL_PASSWORD=[eqemu_pass] -d mariadb:latest
 
 # Optional
 --restart=always
