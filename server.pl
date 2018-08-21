@@ -79,7 +79,7 @@ sub check_database
                 if($run == 0)
                 {
                     print "Emu Server Database created.\n";
-                    system ("wget -N --cache=no --no-check-certificate -O /home/eqemu/server/sql/peq_beta.zip https://raw.githubusercontent.com/rabbired/EQEmuFullDB/master/peq_beta.zip");
+                    system ("wget -N --cache=no --no-check-certificate -O sql/peq_beta.zip https://raw.githubusercontent.com/rabbired/EQEmuFullDB/master/peq_beta.zip");
 		    system ("unzip -o ./sql/peq_beta.zip -d ./sql");
 		    my $eqdb = "mysql -h$host -P$port -u$user -p$pass -N -B -e \"use $db;source ./sql/peqbeta.sql;\" > /dev/null 2>&1";
                     system ("$eqdb");

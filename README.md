@@ -1,6 +1,6 @@
 # EQEmu Server for Docker
 
-docker run -p 9080:9080 -p 9000:9000/udp -p 7000-7100:7000-7100/udp -v [you_eqemu_config] -d rabbired/server_eqemu
+docker run -p 9080:9080 -p 9000:9000/udp -p 7000-7100:7000-7100/udp -v [you_eqemu_config]:/mnt/eqemu/eqemu_config.json -d rabbired/server_eqemu
 
 # Requirements
 
