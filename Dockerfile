@@ -37,7 +37,7 @@ COPY --from=build /home/eqemu/server /mnt/eqemu
 
 WORKDIR /mnt/eqemu
 
-RUN	apt-get update && \
+RUN apt-get update && \
 apt-get install -y mariadb-client libio-stringy-perl liblua5.1-dev \
 unzip wget curl libjson-perl libswitch-perl && \
 dpkg -i ./libsodium*.deb && \
