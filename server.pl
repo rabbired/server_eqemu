@@ -51,21 +51,21 @@ sub check_dir
   {
     case "/mnt/data/maps"
     {
-      system ("wget -N --cache=no --no-check-certificate -O /mnt/data/sql/maps.zip http://github.com/Akkadius/EQEmuMaps/archive/master.zip");
-      system ("unzip /mnt/data/sql/maps.zip && mv -f EQEmuMaps-master /mnt/data/maps && ln -s /mnt/data/maps maps && ln -s /mnt/data/maps Maps");
+      system ("wget -N --cache=no --no-check-certificate -O ./sql/maps.zip http://github.com/Akkadius/EQEmuMaps/archive/master.zip");
+      system ("unzip ./sql/maps.zip && mv -f EQEmuMaps-master /mnt/data/maps && ln -s /mnt/data/maps maps && ln -s /mnt/data/maps Maps");
     }
     case "/mnt/data/quests"
     {
-      system ("wget -N --cache=no --no-check-certificate -O sql/quests.zip https://github.com/ProjectEQ/projecteqquests/archive/master.zip");
-      system ("unzip /mnt/data/sql/quests.zip && mv -f projecteqquests-master /mnt/data/quests" && ln -s /mnt/data/quests quests);
+      system ("wget -N --cache=no --no-check-certificate -O ./sql/quests.zip https://github.com/ProjectEQ/projecteqquests/archive/master.zip");
+      system ("unzip ./sql/quests.zip && mv -f projecteqquests-master /mnt/data/quests && ln -s /mnt/data/quests quests");
     }
     case "/mnt/data/plugins"
     {
-      system ("cp -rf /mnt/data/quests/plugins ./plugins");
+      system ("ln -s /mnt/data/quests/plugins plugins");
     }
     case "/mnt/data/lua_modules"
     {
-      system ("cp -rf /mnt/data//quests/lua_modules ./lua_modules");
+      system ("ln -s /mnt/data//quests/lua_modules lua_modules");
     }
   }
 }
@@ -77,16 +77,18 @@ sub check_database
 	if($run == 0)
 	{
 		print "Emu Server Database created.\n";
-		system ("wget -N --cache=no --no-check-certificate -O /mnt/data/sql/peq_beta.zip https://raw.githubusercontent.com/rabbired/EQEmuFullDB/master/peq_beta.zip");
-		system ("unzip -o /mnt/data/sql/peq_beta.zip -d ./sql");
+		system ("wget -N --cache=no --no-check-certificate -O ./sql/peq_beta.zip https://raw.githubusercontent.com/rabbired/EQEmuFullDB/master/peq_beta.zip");
+		system ("unzip -o ./sql/peq_beta.zip -d ./sql");
 		
 		my $eqdb = "mysql -h$host -P$port -u$user -p$pass -N -B -e \"use $db;source ./sql/peqbeta.sql;\" > /dev/null 2>&1";
-        system ("$eqdb");
+		system ("$eqdb");
 		$eqdb = "mysql -h$host -P$port -u$user -p$pass -N -B -e \"use $db;source ./sql/player_tables.sql;\" > /dev/null 2>&1";
-        system ("$eqdb");
+		system ("$eqdb");
 		my $eqdb = "mysql -h$host -P$port -u$user -p$pass -N -B -e \"use $db;source ./sql/load_bots.sql;\" > /dev/null 2>&1";
-        system ("$eqdb");
-	}else{
+		system ("$eqdb");
+	}
+	else
+	{
 		print "Emu Server Database already exists and does not need to create.\n";
 	}
 }
