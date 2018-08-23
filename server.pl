@@ -4,8 +4,6 @@ system ("rm -rf logs/*.log sql/*");
 
 check_dir("/mnt/data/maps");
 check_dir("/mnt/data/quests");
-check_dir("/mnt/data/plugins");
-check_dir("/mnt/data/lua_modules");
 $line = read_eqemu_config_json();
 
 if($line == 1)
@@ -58,14 +56,7 @@ sub check_dir
     {
       system ("wget -N --cache=no --no-check-certificate -O ./sql/quests.zip https://github.com/ProjectEQ/projecteqquests/archive/master.zip");
       system ("unzip ./sql/quests.zip && mv -f projecteqquests-master /mnt/data/quests && ln -s /mnt/data/quests quests");
-    }
-    case "/mnt/data/plugins"
-    {
-      system ("ln -s /mnt/data/quests/plugins plugins");
-    }
-    case "/mnt/data/lua_modules"
-    {
-      system ("ln -s /mnt/data//quests/lua_modules lua_modules");
+      system ("ln -s /mnt/data/quests/plugins plugins && ln -s /mnt/data//quests/lua_modules lua_modules");
     }
   }
 }

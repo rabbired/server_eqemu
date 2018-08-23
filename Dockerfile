@@ -38,7 +38,7 @@ WORKDIR /mnt/eqemu
 
 RUN apt-get update && \
 apt-get install -y -qq mariadb-client liblua5.1 libmysql++ libperl5i-perl lua5.1 \
-zlibc wget unzip libjson-perl libswitch-perl libio-stringy-perl && \
+zlibc wget unzip libjson-perl libswitch-perl libio-stringy-perl iputils-ping curl && \
 dpkg -i ./libsodium*.deb && \
 rm -rf ./libsodium*.deb && \
 apt-get clean && \
