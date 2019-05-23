@@ -9,8 +9,8 @@ apt-get install -yqq libstdc++6 build-essential gcc-5 g++-5 libtool cmake curl d
 libio-stringy-perl liblua5.1 liblua5.1-dev libluabind-dev libmysql++ libperl-dev libperl5i-perl libsodium-dev \
 libmysqlclient-dev lua5.1 minizip make mariadb-client unzip uuid-dev zlibc wget
 
-RUN wget http://ftp.us.debian.org/debian/pool/main/libs/libsodium/libsodium-dev_1.0.11-1~bpo8+1_amd64.deb -O ./libsodium-dev.deb && \
-wget http://ftp.us.debian.org/debian/pool/main/libs/libsodium/libsodium18_1.0.11-1~bpo8+1_amd64.deb -O ./libsodium18.deb && \
+RUN wget http://ftp.us.debian.org/debian/pool/main/libs/libsodium/libsodium-dev_1.0.11-2_amd64.deb -O ./libsodium-dev.deb && \
+wget http://ftp.us.debian.org/debian/pool/main/libs/libsodium/libsodium18_1.0.11-2_amd64.deb -O ./libsodium18.deb && \
 dpkg -i ./libsodium*.deb && \
 mv ./libsodium*.deb ./server/
 
