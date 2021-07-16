@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 AS build
 
 RUN mkdir /home/eqemu && mkdir /home/eqemu/server && mkdir /home/eqemu/server/sql
 
