@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 AS build
+FROM ubuntu:18.04
 
 RUN mkdir /home/eqemu && mkdir /home/eqemu/server && mkdir /home/eqemu/server/sql
 
@@ -28,7 +28,7 @@ cp -rf /home/eqemu/Server/utils/defaults/* /home/eqemu/server && \
 cp -rf /home/eqemu/Server/utils/patches/* /home/eqemu/server && \
 rm -rf /home/eqemu/server/Maps /home/eqemu/server/quests /home/eqemu/server/plugins /home/eqemu/server/lua_modules
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER RedZ "rabbired@outlook.com"
 
